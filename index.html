@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ödev Takip</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: darkblue; }
+    input, button { margin: 5px; padding: 5px; }
+    ul { list-style-type: none; padding: 0; }
+    li { margin: 5px 0; padding: 5px; background: #f2f2f2; }
+    .done { text-decoration: line-through; color: gray; }
+  </style>
+</head>
+<body>
+  <h1>Ödev Takip Sistemi</h1>
+
+  <input type="text" id="ders" placeholder="Ders Adı">
+  <input type="text" id="aciklama" placeholder="Açıklama">
+  <input type="date" id="tarih">
+  <button onclick="ekle()">Ekle</button>
+
+  <h2>Ödevler</h2>
+  <ul id="liste"></ul>
+
+  <script>
+    function ekle() {
+      const ders = document.getElementById("ders").value;
+      const aciklama = document.getElementById("aciklama").value;
+      const tarih = document.getElementById("tarih").value;
+
+      if (!ders || !tarih) return alert("Ders adı ve tarih gir!");
+
+      const li = document.createElement("li");
+      li.textContent = ders + " - " + aciklama + " - " + tarih;
+
+      li.onclick = () => li.classList.toggle("done");
+
+      document.getElementById("liste").appendChild(li);
+
+      document.getElementById("ders").value = "";
+      document.getElementById("aciklama").value = "";
+      document.getElementById("tarih").value = "";
+    }
+  </script>
+</body>
+</html>
